@@ -7,18 +7,15 @@ function App() {
   return (
 
     <div className="App">
-      <header>
+      <header className='App-header'>
         <Header />
       </header>
-
-      <main>
+      <main className='App-main'>
         <Main />
       </main>
-
-      <footer>
+      <footer className='App-footer'>
         <Footer />
       </footer>
-
     </div>
   )
 }
