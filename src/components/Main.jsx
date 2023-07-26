@@ -1,7 +1,7 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
-import Collenctions from './pages/Collenction'
+import Collection from './pages/Collection'
 import About from './pages/About'
 import Login from './pages/Login'
 
@@ -10,7 +10,7 @@ const Main = () => {
     <div>
         <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/collenctions" element={<Collenctions />} />
+            <Route path="/collection" element={<Collection />} />
             <Route path="/about" element={<About />} />
             <Route path="/login" element={<Login />} />
         </Routes>

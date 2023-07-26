@@ -13,21 +13,27 @@ const Header = () => {
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav me-auto mb-2 mb-md-0">
+                        <ul className="navbar-nav mb-2 mb-md-0 w-100">
                             <li className="nav-item">
                                 <Link className="nav-link active" to="/">Home</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link active" to="/collenctions">Collenctions</Link>
+                                <Link className="nav-link active" to="/collection">Collection</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link active" to="/">Shop</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link active" to="/about">About</Link>
                             </li>
-                            <li className="nav-item">
+                            <li className="nav-item ms-auto">
                                 <Link className="nav-link active" to="/login">Login</Link>
                             </li>
+                            <li className="nav-item">
+                                <Link className="nav-link active" to="/about">Cart</Link>
+                            </li>
                         </ul>
-                        
+
                     </div>
                 </div>
             </nav>

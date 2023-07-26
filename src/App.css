@@ -45,3 +45,19 @@
 .read-the-docs {
   color: #888;
 }
+
+/* homepage */
+.home .hero {
+  background-image: url(./assets/denmark.png);
+  height: 550px;
+  background-size: cover;
+  background-position: center;
+}
+
+.home .filter{
+  background-image: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0, 0, 0, 0));
+  height: 100%;
+  width: 100%;
+}
+
+
