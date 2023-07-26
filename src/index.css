@@ -35,6 +35,11 @@ body {
   padding: 0 50px;
 }
 
+.header {
+  font-family: Bodoni;
+  font-weight: medium;
+}
+
 .hero h1, .hero h2 {
   font-size: 4em;
   line-height: 1.2;
