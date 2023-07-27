@@ -8,6 +8,7 @@
 
 .App-main {
   min-height: calc(100vh - 80px);
+  background-color: white;
 }
 
 .logo {
@@ -60,4 +61,10 @@
   width: 100%;
 }
 
-
+/* footer */
+footer {
+  background-color: whitesmoke;
+}
+.footer i {
+  font-size: 24px;
+}
