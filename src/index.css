@@ -36,8 +36,8 @@ body {
 }
 
 .header {
-  font-family: Bodoni;
-  font-weight: medium;
+  font-family: 'Bodoni Moda', serif;
+  font-weight: 500;
 }
 
 .hero h1, .hero h2 {
@@ -68,9 +68,9 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover {
+/* button:hover {
   border-color: #646cff;
-}
+} */
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -87,4 +87,23 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.email-input {
+  border-radius: 8px 8px 0 0;
+  position: relative;
+}
+
+.email-input:focus, .password-input:focus {
+  z-index: 1;
+}
+
+.password-input {
+  border-radius: 0 0 8px 8px;
+  position: relative;
+  top: -1px
+}
+
+.register input {
+  margin: 10px 0 20px 0; 
 }

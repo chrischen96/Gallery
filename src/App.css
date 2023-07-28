@@ -7,7 +7,7 @@
 }
 
 .App-main {
-  min-height: calc(100vh - 80px);
+  min-height: calc(100vh - 189px);
   background-color: white;
 }
 
@@ -56,7 +56,7 @@
 }
 
 .home .filter{
-  background-image: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0, 0, 0, 0));
+  background-image: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0, 0, 0, 0));
   height: 100%;
   width: 100%;
 }
@@ -67,4 +67,39 @@ footer {
 }
 .footer i {
   font-size: 24px;
+}
+
+/* register and login */
+.register, .login {
+  background-color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 189px);
+}
+
+.register-box, .login-box {
+  width: 300px;
+  /* height: 400px; */
+  margin: auto;
+}
+
+.register-box label, .login-box label {
+  color: #888;
+}
+
+.email-input {
+  border: 5px solid #646cff;
+  border-radius: 5px;
+}
+
+.goto {
+  position: absolute;
+  top: 9px;
+  right: 12px;
+  padding: 0;
+  background-color: transparent;
+  color: #4a4a4a;
+  font-size: 26px;
+  z-index: 1;
 }
