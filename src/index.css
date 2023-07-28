@@ -17,12 +17,15 @@
 }
 
 a {
-  font-weight: 500;
-  color: #646cff;
+  /* font-weight: 500; */
+  color: #0d6efd;
   text-decoration: inherit;
 }
-a:hover {
-  color: #535bf2;
+
+.login a:hover, .register a:hover {
+  text-decoration-line: underline;
+  text-underline-position: below;
+  text-decoration-thickness: 1px;
 }
 
 body {
@@ -40,7 +43,8 @@ body {
   font-weight: 500;
 }
 
-.hero h1, .hero h2 {
+.hero h1,
+.hero h2 {
   font-size: 4em;
   line-height: 1.2;
   font-family: 'Newsreader', serif;
@@ -51,10 +55,16 @@ body {
 .hero h2 {
   font-size: 1.5em;
   font-weight: medium;
+  line-height: 1.5;
   margin-bottom: 50px;
   text-align: left;
   display: inline-block;
   width: 400px;
+}
+
+.collection p {
+  font-size: 1em;
+  margin-bottom: 6px;
 }
 
 button {
@@ -68,6 +78,7 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 /* button:hover {
   border-color: #646cff;
 } */
@@ -81,29 +92,38 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
-  a:hover {
-    color: #747bff;
-  }
+
   button {
     background-color: #f9f9f9;
   }
 }
 
+@media (max-width: 420px) {
+  .container-fluid {
+    padding: 0 30px;
+  }
+
+  .hero h2 {
+    width: 100%;
+  }
+}
+
 .email-input {
-  border-radius: 8px 8px 0 0;
+  border-radius: 10px 10px 0 0;
   position: relative;
 }
 
-.email-input:focus, .password-input:focus {
+.email-input:focus,
+.password-input:focus {
   z-index: 1;
 }
 
 .password-input {
-  border-radius: 0 0 8px 8px;
+  border-radius: 0 0 10px 10px;
   position: relative;
   top: -1px
 }
 
-.register input {
-  margin: 10px 0 20px 0; 
+.register .form-control {
+  margin-top: 10px;
 }
