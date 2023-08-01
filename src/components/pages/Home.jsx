@@ -1,7 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import highlight from '../../assets/highlight.jpeg'
 import browse from '../../assets/browse.jpeg'
 import lobos from '../../assets/lobos.jpeg'
+import about from '../../assets/about.jpeg'
 
 const Home = () => {
     return (
@@ -23,15 +25,21 @@ const Home = () => {
                     <div className='row row-cols-sm-3 row-cols-1'>
                         <div className='col mb-3'>
                             <h3>Highlights</h3>
-                            <img src={highlight} className='w-100' alt="" />
+                            <Link to='/feature'>
+                                <img src={highlight} className='w-100' alt="" />
+                            </Link>
                         </div>
                         <div className='col mb-3'>
                             <h3>Browse</h3>
-                            <img src={browse} className='w-100' alt="" />
+                            <Link>
+                                <img src={lobos} className='w-100' alt="" />
+                            </Link>
                         </div>
                         <div className='col mb-3'>
-                            <h3>Search Topic</h3>
-                            <img src={lobos} className='w-100' alt="" />
+                            <h3>About Me</h3>
+                            <Link>
+                                <img src={about} className='w-100' alt="" />
+                            </Link>
                         </div>
                     </div>
                 </div>

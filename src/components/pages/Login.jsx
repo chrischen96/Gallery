@@ -1,27 +1,67 @@
 import React from 'react'
-import UserContext from '../../context'
-import { useState, useEffect } from 'react'
+import { useState, useContext, useEffect } from 'react'
+import LoginContext from '../../context.jsx'
 import axiosInstance from '../../axios.jsx'
 import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
-  const [collection, setCollection] = useState([])
-  const [user, setUser] = useState(null)
+  const { loginUser, setLoginUser } = useContext(LoginContext)
+  const [user, setUser] = useState({
+    email: '',
+    password: '',
+  })
 
-  useEffect(() => {
-    const getCollection = async () => {
-      try {
-        await axiosInstance.get('')
-          .then((res) => {
-            console.log(res.data)
-            setCollection(res.data)
+  const handleChange = (e) => {
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value.trim(),
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(user);
+    await axiosInstance
+      .post(`api/token/`, {
+        email: user.email,
+        password: user.password,
+      })
+      .then(async (res) => {
+        localStorage.setItem('access', res.data.access);
+        localStorage.setItem('refresh', res.data.refresh);
+
+      })
+      .then(() => {
+        axiosInstance
+          .get(`users/profile/${user.email}/`, {
+            headers: {
+              Authorization: `JWT ${localStorage.getItem('access')}`,
+            },
           })
-      } catch (err) {
-        console.log(err)
+          .then((res) => {
+            setLoginUser(res.data);
+            console.log(res.data);
+          })
+          .catch((err) => {
+            console.log(err);
+          }
+          );
+        navigate('/collection');
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("Wrong email or password!");
       }
-    }
-    getCollection()
-  }, [])
+      );
+  };
+
+
+  const navigate = useNavigate()
+
+  const showPhoto = (id) => {
+    navigate(`${id}`)
+  }
+
 
   return (
     <div className='login'>
@@ -36,7 +76,7 @@ const Login = () => {
               id="email"
               name="email"
               placeholder="name@example.com"
-              // onChange={handleChange}
+              onChange={handleChange}
             />
             <label htmlFor="floatingInput">Email address</label>
           </div>
@@ -47,11 +87,12 @@ const Login = () => {
               id="password"
               name="password"
               placeholder="Password"
-              // onChange={handleChange}
+              onChange={handleChange}
             />
             <button
               className="goto"
               type="submit"
+              onClick={handleSubmit}
             >
               <i className="bi bi-arrow-right-circle"></i>
             </button>

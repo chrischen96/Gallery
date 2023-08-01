@@ -6,6 +6,8 @@ import About from './pages/About'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Photo from './pages/Photo'
+import Profile from './pages/Profile'
+import Feature from './pages/Feature'
 
 const Main = () => {
   return (
@@ -16,7 +18,9 @@ const Main = () => {
         <Route path='/collection/:id' element={<Photo />} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/feature" element={<Feature />} />
       </Routes>
     </div>
   )

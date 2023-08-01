@@ -1,12 +1,26 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useContext } from 'react'
+import axiosInstance from '../axios.jsx'
+import LoginContext from '../context.jsx'
 
 const Header = () => {
+    const { loginUser, setLoginUser } = useContext(LoginContext)
+
     const handleClick = () => {
         if (window.innerWidth < 768) {
             document.getElementById('toggler').click();
         }
     }
+
+    const logout = () => {
+        localStorage.removeItem('access')
+        localStorage.removeItem('refresh')
+        setLoginUser(null)
+        window.location.reload()
+    }
+
+    console.log(loginUser)
 
     return (
         <div className='header'>
@@ -24,19 +38,23 @@ const Header = () => {
                                 <Link className="nav-link active" onClick={handleClick} to="/">Home</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link active" onClick={handleClick} to="/collection">Collection</Link>
+                                <Link className="nav-link active" onClick={handleClick} to="/feature">Feature</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link active" onClick={handleClick} to="/">Shop</Link>
+                                <Link className="nav-link active" onClick={handleClick} to="/collection">Collection</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link active" onClick={handleClick} to="/about">About</Link>
                             </li>
                             <li className="nav-item ms-md-auto">
-                                <Link className="nav-link active" onClick={handleClick} to="/login">Sign in</Link>
+                                {
+                                    loginUser ? <Link className="nav-link active fw-bold" onClick={handleClick} to='/profile'>{loginUser.user_name}</Link> : <Link className="nav-link active" onClick={handleClick} to="/login">Sign in</Link>
+                                }
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link active" onClick={handleClick} to="/register">Sign up</Link>
+                                {
+                                    loginUser ? <Link className="nav-link active" onClick={logout}>Sign out</Link> : <Link className="nav-link active" onClick={handleClick} to="/register">Sign up</Link>
+                                }
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link active" onClick={handleClick} to="/about">Cart</Link>

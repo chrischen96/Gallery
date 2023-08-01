@@ -7,19 +7,17 @@ import Masonry from 'masonry-layout'
 
 const Collection = () => {
   const [collection, setCollection] = useState([])
-  const [user, setUser] = useState(null)
 
   useEffect(() => {
     const getCollection = async () => {
-      try {
-        await axiosInstance.get('')
-          .then((res) => {
-            console.log(res.data)
-            setCollection(res.data)
-          })
-      } catch (err) {
-        console.log(err)
-      }
+      await axiosInstance.get('')
+        .then((res) => {
+          console.log(res.data)
+          setCollection(res.data)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
     }
     getCollection()
   }, [])
@@ -52,10 +50,10 @@ const Collection = () => {
         <div className="grid">
           {collection.map((item) => (
             <div className='grid-item' key={item.id}>
-              <div 
-              className="grid-content" 
-              style={{padding:'10px'}}
-              onClick={() => showPhoto(item.id)}
+              <div
+                className="grid-content"
+                style={{ padding: '10px' }}
+                onClick={() => showPhoto(item.id)}
               >
                 <img src={item.image} className="w-100" alt="..." />
 
