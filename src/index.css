@@ -41,6 +41,8 @@ body {
 .header {
   font-family: 'Bodoni Moda', serif;
   font-weight: 500;
+  background-color: whitesmoke;
+  height: 60px;
 }
 
 .hero h1,

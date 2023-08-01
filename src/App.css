@@ -7,7 +7,7 @@
 }
 
 .App-main {
-  min-height: calc(100vh - 175.5px);
+  min-height: calc(100vh - 177px);
   background-color: white;
 }
 
@@ -91,7 +91,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: calc(100vh - 175.5px);
+  min-height: calc(100vh - 177px);
 
   .h2 {
     font-family: 'Newsreader', serif;
@@ -129,7 +129,7 @@ footer {
 /* collection */
 .collection {
   background-color: white;
-  min-height: calc(100vh - 175.5px);
+  min-height: calc(100vh - 177px);
 }
 
 .collection .grid {
@@ -243,9 +243,9 @@ iframe {
       height: 500px
     }
 
-  .collection .grid-item {
+  /* .collection .grid-item {
     width: calc((100vw - (100vw - 100%)) / 2);
-  }
+  } */
 }
 
 @media (min-width: 890px) {

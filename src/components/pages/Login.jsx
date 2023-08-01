@@ -3,6 +3,7 @@ import { useState, useContext, useEffect } from 'react'
 import LoginContext from '../../context.jsx'
 import axiosInstance from '../../axios.jsx'
 import { useNavigate } from 'react-router-dom'
+import jwtDecode from 'jwt-decode'
 
 const Login = () => {
   const { loginUser, setLoginUser } = useContext(LoginContext)
@@ -32,12 +33,11 @@ const Login = () => {
 
       })
       .then(() => {
+        const token = localStorage.getItem('access');
+        const decoded = jwtDecode(token);
+        console.log(decoded);
         axiosInstance
-          .get(`users/profile/${user.email}/`, {
-            headers: {
-              Authorization: `JWT ${localStorage.getItem('access')}`,
-            },
-          })
+          .get(`users/profile/${decoded.user_id}/`)
           .then((res) => {
             setLoginUser(res.data);
             console.log(res.data);

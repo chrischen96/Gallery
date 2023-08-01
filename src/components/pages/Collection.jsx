@@ -8,6 +8,15 @@ import Masonry from 'masonry-layout'
 const Collection = () => {
   const [collection, setCollection] = useState([])
 
+  const manageMasonry = () => {
+    const elem = document.querySelector('.grid')
+    const msnry = new Masonry(elem, {
+      // options
+      itemSelector: '.grid-item',
+      columnWidth: '.grid-item',
+    })
+  }
+
   useEffect(() => {
     const getCollection = async () => {
       await axiosInstance.get('')
@@ -22,11 +31,7 @@ const Collection = () => {
     getCollection()
   }, [])
 
-  let elem = document.querySelector('.grid');
-  const msnry = new Masonry(elem, {
-    itemSelector: '.grid-item',
-    percentPosition: true
-  });
+  manageMasonry()
 
   const navigate = useNavigate()
 
