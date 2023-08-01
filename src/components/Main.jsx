@@ -5,17 +5,19 @@ import Collection from './pages/Collection'
 import About from './pages/About'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import Photo from './pages/Photo'
 
 const Main = () => {
   return (
     <div>
-        <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/collection" element={<Collection />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-        </Routes>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/collection" element={<Collection />} />
+        <Route path='/collection/:id' element={<Photo />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
     </div>
   )
 }

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import axiosInstance from '../../axios.jsx'
 import { useNavigate } from 'react-router-dom'
 import UserContext from '../../context'
+import Masonry from 'masonry-layout'
 
 const Collection = () => {
   const [collection, setCollection] = useState([])
@@ -23,27 +24,59 @@ const Collection = () => {
     getCollection()
   }, [])
 
+  let elem = document.querySelector('.grid');
+  const msnry = new Masonry(elem, {
+    itemSelector: '.grid-item',
+    percentPosition: true
+  });
+
+  const navigate = useNavigate()
+
+  const showPhoto = (id) => {
+    navigate(`${id}`)
+  }
+
+  const handleSelect = (e) => {
+    const value = e.target.value
+    if (value === 'all') {
+      setCollection(collection)
+    } else {
+      const filtered = collection.filter((item) => item.category === value)
+      setCollection(filtered)
+    }
+  }
 
   return (
     <div className='collection'>
-      <div className="container">
-        <div className="row">
+      <div className="container-fluid py-4">
+        <div className="grid">
           {collection.map((item) => (
-            <div className="col-md-6 px-3">
-              <div className="card my-4 shadow-sm p-0">
-                <img src={item.image} className="card-img-top" alt="..." />
-                <div className="card-body">
-                  <h5 className="card-title">{item.title}</h5>
-                  <p className="card-text">Price: ${item.price}</p>
-                  <p className="card-text">Size: {item.pixel_width} x {item.pixel_height}</p>
-                  <p className="card-text">Focal length: {item.focal_length}mm</p>
-                  <div className="d-flex justify-content-center align-items-center mt-3">
-                    <div className="btn-group">
-                      <button type="button" className="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" className="btn btn-sm btn-outline-secondary">Edit</button>
+            <div className='grid-item' key={item.id}>
+              <div 
+              className="grid-content" 
+              style={{padding:'10px'}}
+              onClick={() => showPhoto(item.id)}
+              >
+                <img src={item.image} className="w-100" alt="..." />
+
+                {/* <div className="pic-card">
+                  <div className="shadow-sm p-0">
+                    <img src={item.image} className="w-100" alt="..." />
+                    <div className="detail">
+                      <h5 className="detail-title">{item.title}</h5>
+                      <p className="detail-text">Price: ${item.price}</p>
+                      <p className="detail-text">Size: {item.pixel_width} x {item.pixel_height}</p>
+                      <p className="detail-text">Focal length: {item.focal_length}mm</p>
+                      <div className="d-flex justify-content-center align-items-center mt-3">
+                        <div className="btn-group">
+                          <button type="button" className="btn btn-sm btn-outline-secondary">View</button>
+                          <button type="button" className="btn btn-sm btn-outline-secondary">Edit</button>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
+
               </div>
             </div>
           ))}
