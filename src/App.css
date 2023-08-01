@@ -243,9 +243,9 @@ iframe {
       height: 500px
     }
 
-  /* .collection .grid-item {
+  .collection .grid-item {
     width: calc((100vw - (100vw - 100%)) / 2);
-  } */
+  }
 }
 
 @media (min-width: 890px) {
