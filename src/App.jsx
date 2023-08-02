@@ -7,10 +7,20 @@ import { useState, useEffect } from 'react'
 
 function App() {
   const [loginUser, setLoginUser] = useState(null)
+  const [cart, setCart] = useState(null)
+
+  useEffect(() => {
+    const token = localStorage.getItem('access')
+    
+    if (token) {
+
+      setLoginUser(token)
+    }
+  }, [])
 
   return (
     <div className="App">
-      <LoginContext.Provider value={{ loginUser, setLoginUser }}>
+      <LoginContext.Provider value={{ loginUser, setLoginUser, cart, setCart }}>
         <header className='App-header'>
           <Header />
         </header>

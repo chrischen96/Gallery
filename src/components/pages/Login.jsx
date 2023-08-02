@@ -11,6 +11,7 @@ const Login = () => {
     email: '',
     password: '',
   })
+  const [error, setError] = useState(null)
 
   const handleChange = (e) => {
     setUser({
@@ -37,20 +38,21 @@ const Login = () => {
         const decoded = jwtDecode(token);
         console.log(decoded);
         axiosInstance
-          .get(`users/profile/${decoded.user_id}/`)
+          .get(`users/profile/${decoded.user_id}/`, { headers: { Authorization: `JWT ${token}` } })
           .then((res) => {
             setLoginUser(res.data);
             console.log(res.data);
           })
           .catch((err) => {
             console.log(err);
+            setError(err.response.data.detail);
           }
           );
         navigate('/collection');
       })
       .catch((err) => {
         console.log(err);
-        alert("Wrong email or password!");
+        setError(err.response.data.detail);
       }
       );
   };
@@ -99,7 +101,11 @@ const Login = () => {
             <label htmlFor="floatingPassword">Password</label>
           </div>
 
-          <div className="form-check text-start d-flex justify-content-center" style={{ marginTop: '66px' }}>
+          <div className='errmsg my-3' style={{height:'50px'}}>
+            <p className='text-danger m-0'>{error}.</p>
+          </div>
+          
+          <div className="form-check text-start d-flex justify-content-center" style={{ marginTop: '40px' }}>
             <input className="form-check-input me-2" type="checkbox" value="remember-me" id="flexCheckDefault" />
             <label className="form-check-label text-black" htmlFor="flexCheckDefault">
               Remember me

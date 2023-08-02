@@ -48,16 +48,16 @@ const Header = () => {
                             </li>
                             <li className="nav-item ms-md-auto">
                                 {
-                                    loginUser ? <Link className="nav-link active fw-bold" onClick={handleClick} to='/profile'>{loginUser.user_name}</Link> : <Link className="nav-link active" onClick={handleClick} to="/login">Sign in</Link>
+                                    loginUser ? <Link className="nav-link active fw-bold" onClick={handleClick} to='/profile'>{loginUser.user_name}</Link> : <Link className="nav-link active" onClick={handleClick} to="/login">Log in</Link>
                                 }
                             </li>
                             <li className="nav-item">
                                 {
-                                    loginUser ? <Link className="nav-link active" onClick={logout}>Sign out</Link> : <Link className="nav-link active" onClick={handleClick} to="/register">Sign up</Link>
+                                    loginUser ? <Link className="nav-link active" onClick={logout}>Log out</Link> : <Link className="nav-link active" onClick={handleClick} to="/register">Sign up</Link>
                                 }
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link active" onClick={handleClick} to="/about">Cart</Link>
+                                <Link className="nav-link active" onClick={handleClick} to="/cart">Cart</Link>
                             </li>
                         </ul>
 

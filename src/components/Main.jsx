@@ -8,6 +8,7 @@ import Register from './pages/Register'
 import Photo from './pages/Photo'
 import Profile from './pages/Profile'
 import Feature from './pages/Feature'
+import Cart from './pages/Cart'
 
 const Main = () => {
   return (
@@ -21,6 +22,7 @@ const Main = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="/register" element={<Register />} />
         <Route path="/feature" element={<Feature />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </div>
   )

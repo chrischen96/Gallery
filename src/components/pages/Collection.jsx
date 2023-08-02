@@ -59,7 +59,6 @@ const Collection = () => {
                   style={{borderRadius: '8px', cursor: 'pointer'}}
                 />
               </div>
-
             ))}
           </Masonry>
         </ResponsiveMasonry>

@@ -29,7 +29,7 @@ const Register = () => {
             alert("Passwords don't match!");
         } else {
             axiosInstance
-                .post(`https://mygallery-production.up.railway.app/users/register/`, {
+                .post(`users/register/`, {
                     email: formData.email,
                     user_name: formData.user_name,
                     first_name: formData.first_name,
