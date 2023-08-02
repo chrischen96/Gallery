@@ -9,22 +9,22 @@ const Header = () => {
 
     const { loginUser, setLoginUser } = useContext(LoginContext)
 
-    // useEffect(() => {
-    //     const token = localStorage.getItem('access')
-    //     if (token) {
-    //         const decoded = jwtDecode(token)
-    //         const getUser = () => {
-    //             axiosInstance.get(`users/profile/${decoded.user_id}/`, { headers: { Authorization: `JWT ${token}` } })
-    //                 .then(res => {
-    //                     setLoginUser(res.data)
-    //                 })
-    //                 .catch(err => {
-    //                     console.log(err)
-    //                 })
-    //         }
-    //         getUser()
-    //     }
-    // }, [])
+    useEffect(() => {
+        const token = localStorage.getItem('access')
+        if (token) {
+            const decoded = jwtDecode(token)
+            const getUser = () => {
+                axiosInstance.get(`users/profile/${decoded.user_id}/`, { headers: { Authorization: `JWT ${token}` } })
+                    .then(res => {
+                        setLoginUser(res.data)
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
+            }
+            getUser()
+        }
+    }, [])
 
 
 

@@ -112,7 +112,7 @@ const Cart = () => {
                                             <img
                                                 className=''
                                                 src={photo.image}
-                                                style={{ height: '300px', width: '300px', objectFit: 'cover' }}
+                                                style={{ height: '300px', width: '300px', objectFit: 'cover', borderRadius: '10px' }}
                                                 alt="" />
                                         </div>
                                         <h5 className="card-title my-3">{photo.title}</h5>
@@ -127,9 +127,26 @@ const Cart = () => {
                     }
                 </div>
 
-                <h1 className='mb-5'>
-                    Total Price: ${photos.reduce((a, b) => a + b.price, 0)}
-                </h1>
+                {/* <div className="detail-head">
+                    <div className="detail-head-grid">
+                        <h1 className='mb-5' style={{ borderTop: '1px solid black', padding: '50px 0' }}>
+                            Total Price: ${photos.reduce((a, b) => a + b.price, 0)}
+                        </h1>
+                    </div>
+                </div> */}
+                <div className='' style={{}}>
+                    <h1 className='' style={{ borderTop: '1px solid black', padding: '30px 0' }}>
+                        Total Price: ${photos.reduce((a, b) => a + b.price, 0)}
+                    </h1>
+                    <div className='d-flex align-items-center justify-content-center mb-5'>
+                        <button className="detail-head-back d-flex align-items-center justify-content-center">
+                            <h3 className='m-0 me-2'>Check Out</h3>
+                            <h1 className='mt-1 pt-1'><i className="bi bi-arrow-right-short"></i></h1>
+                        </button>
+                    </div>
+
+                </div>
+
             </div>
         </div>
     )
