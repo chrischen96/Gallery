@@ -23,21 +23,21 @@ const Home = () => {
                 <div className='container-fluid py-3'>
                     {/* <h1 className='my-3'>Discover</h1> */}
                     <div className='row row-cols-md-3 row-cols-1'>
-                        <div className='col mb-3'>
+                        <div className='col my-4'>
                             <h3>Highlights</h3>
                             <Link to='/feature'>
                                 <img src={highlight} className='w-100' alt=""/>
                             </Link>
                         </div>
-                        <div className='col mb-3'>
+                        <div className='col my-4'>
                             <h3>Browse</h3>
-                            <Link>
+                            <Link to='/collection'>
                                 <img src={lobos} className='w-100' alt="" />
                             </Link>
                         </div>
-                        <div className='col mb-3'>
+                        <div className='col my-4'>
                             <h3>About Me</h3>
-                            <Link>
+                            <Link to='about'>
                                 <img src={about} className='w-100' alt="" />
                             </Link>
                         </div>

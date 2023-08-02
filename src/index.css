@@ -42,7 +42,7 @@ body {
   font-family: 'Bodoni Moda', serif;
   font-weight: 500;
   background-color: whitesmoke;
-  height: 60px;
+  line-height: 1.8em;
 }
 
 .hero h1,

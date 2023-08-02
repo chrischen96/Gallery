@@ -45,7 +45,7 @@ const Collection = () => {
     <div className='collection'>
       <div className="container-fluid py-4">
         <ResponsiveMasonry
-          columnsCountBreakPoints={{ 400: 1, 680: 2, 900: 3, 1400: 4 }}
+          columnsCountBreakPoints={{ 400: 1, 680: 2, 990: 3, 1400: 4 }}
         >
           <Masonry>
             {collection.map((item) => (
