@@ -9,7 +9,8 @@ import { useNavigate } from 'react-router-dom'
 const Cart = () => {
     const { loginUser, setLoginUser } = useContext(LoginContext)
     const [cart, setCart] = useState(null)
-    const [photos, setPhotos] = useState(null)
+    const [photos, setPhotos] = useState([])
+    const [loading, setLoading] = useState(true)
     const user = JSON.parse(localStorage.getItem('user'))
 
     useEffect(() => {
@@ -33,9 +34,12 @@ const Cart = () => {
                                 photoItems.push(res.data)
                                 setPhotos(photoItems)
                             })
+                        if (i === cartPhotos.length - 1) {
+                            setLoading(false)
+                        }
                     }
                     console.log(photoItems)
-                    
+
                 })
                 .catch((err) => console.log(err))
         }
@@ -98,24 +102,28 @@ const Cart = () => {
             <div className="container-fluid" style={{ maxWidth: '980px' }}>
                 <div class="row">
                     {
-                        photos.map(photo => (
-                            <div className="col-6 my-5" key={photo.id}>
-                                <div className="">
-                                    <div style={{}}>
-                                        <img
-                                            className=''
-                                            src={photo.image}
-                                            style={{ height: '300px', width: '300px', objectFit: 'cover' }}
-                                            alt="" />
+                        loading === true ? (
+                            <h1 className='text-center'>Waiting...</h1>
+                        ) : (
+                            photos.map(photo => (
+                                <div className="col-6 my-5" key={photo.id}>
+                                    <div className="">
+                                        <div style={{}}>
+                                            <img
+                                                className=''
+                                                src={photo.image}
+                                                style={{ height: '300px', width: '300px', objectFit: 'cover' }}
+                                                alt="" />
+                                        </div>
+                                        <h5 className="card-title my-3">{photo.title}</h5>
+                                        <p className="card-text">Price: ${photo.price}</p>
+                                        <button className="btn btn-primary" onClick={() => {
+                                            handleDelete(photo.id)
+                                        }}>Delete</button>
                                     </div>
-                                    <h5 className="card-title my-3">{photo.title}</h5>
-                                    <p className="card-text">Price: ${photo.price}</p>
-                                    <button className="btn btn-primary" onClick={() => {
-                                        handleDelete(photo.id)
-                                    }}>Delete</button>
                                 </div>
-                            </div>
-                        ))
+                            ))
+                        )
                     }
                 </div>
 
