@@ -3,19 +3,13 @@ import { useState, useEffect } from 'react'
 import axiosInstance from '../../axios.jsx'
 import { useNavigate } from 'react-router-dom'
 import UserContext from '../../context'
-import Masonry from 'masonry-layout'
+import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry'
+// import Box from '@mui/material/Box';
+// import Masonry from '@mui/lab/Masonry';
+
 
 const Collection = () => {
   const [collection, setCollection] = useState([])
-
-  const manageMasonry = () => {
-    const elem = document.querySelector('.grid')
-    const msnry = new Masonry(elem, {
-      // options
-      itemSelector: '.grid-item',
-      columnWidth: '.grid-item',
-    })
-  }
 
   useEffect(() => {
     const getCollection = async () => {
@@ -30,8 +24,6 @@ const Collection = () => {
     }
     getCollection()
   }, [])
-
-  manageMasonry()
 
   const navigate = useNavigate()
 
@@ -52,7 +44,46 @@ const Collection = () => {
   return (
     <div className='collection'>
       <div className="container-fluid py-4">
-        <div className="grid">
+        <ResponsiveMasonry
+          columnsCountBreakPoints={{ 400: 1, 680: 2, 900: 3, 1400: 4 }}
+        >
+          <Masonry>
+            {collection.map((item) => (
+              <div className='pic-item' key={item.id} style={{padding:'12px'}}>
+                <img
+                  key={item.id}
+                  src={item.image}
+                  className="pic w-100"
+                  onClick={() => showPhoto(item.id)}
+                  alt={item.title}
+                  style={{borderRadius: '8px', cursor: 'pointer'}}
+                />
+              </div>
+
+            ))}
+          </Masonry>
+        </ResponsiveMasonry>
+
+        {/* <Box sx={{ width: 500, minHeight: 829 }}> */}
+          {/* <Masonry columns={{xs:1, sm:2, md:3, lg:4}} spacing={2}>
+            {collection.map((item, index) => (
+              <div key={index} >
+                <img
+                  src={`${item.image}?w=162&auto=format`}
+                  srcSet={`${item.image}?w=162&auto=format&dpr=2 2x`}
+                  alt={item.title}
+                  loading="lazy"
+                  style={{
+                    borderRadius: '8px',
+                    width: '100%',
+                  }}
+                />
+              </div>
+            ))}
+          </Masonry> */}
+        {/* </Box> */}
+
+        {/* <div className="grid">
           {collection.map((item) => (
             <div className='grid-item' key={item.id}>
               <div
@@ -61,29 +92,10 @@ const Collection = () => {
                 onClick={() => showPhoto(item.id)}
               >
                 <img src={item.image} className="w-100" alt="..." />
-
-                {/* <div className="pic-card">
-                  <div className="shadow-sm p-0">
-                    <img src={item.image} className="w-100" alt="..." />
-                    <div className="detail">
-                      <h5 className="detail-title">{item.title}</h5>
-                      <p className="detail-text">Price: ${item.price}</p>
-                      <p className="detail-text">Size: {item.pixel_width} x {item.pixel_height}</p>
-                      <p className="detail-text">Focal length: {item.focal_length}mm</p>
-                      <div className="d-flex justify-content-center align-items-center mt-3">
-                        <div className="btn-group">
-                          <button type="button" className="btn btn-sm btn-outline-secondary">View</button>
-                          <button type="button" className="btn btn-sm btn-outline-secondary">Edit</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div> */}
-
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
     </div>
   )

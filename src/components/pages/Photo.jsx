@@ -27,7 +27,7 @@ const Photo = () => {
 
     return (
         <div className="photo">
-            <div className="container-fluid">
+            <div className="container-fluid" style={{ maxWidth: '1080px'}}>
                 <div className="detail-head">
                     <div className="detail-head-grid">
                         <button className="detail-head-back">

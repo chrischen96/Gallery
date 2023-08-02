@@ -22,11 +22,11 @@ const Home = () => {
             <div className='discover my-4'>
                 <div className='container-fluid py-3'>
                     {/* <h1 className='my-3'>Discover</h1> */}
-                    <div className='row row-cols-sm-3 row-cols-1'>
+                    <div className='row row-cols-md-3 row-cols-1'>
                         <div className='col mb-3'>
                             <h3>Highlights</h3>
                             <Link to='/feature'>
-                                <img src={highlight} className='w-100' alt="" />
+                                <img src={highlight} className='w-100' alt=""/>
                             </Link>
                         </div>
                         <div className='col mb-3'>
