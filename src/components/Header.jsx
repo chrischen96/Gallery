@@ -1,11 +1,32 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import axiosInstance from '../axios.jsx'
 import LoginContext from '../context.jsx'
+import jwtDecode from 'jwt-decode'
 
 const Header = () => {
+
     const { loginUser, setLoginUser } = useContext(LoginContext)
+
+    // useEffect(() => {
+    //     const token = localStorage.getItem('access')
+    //     if (token) {
+    //         const decoded = jwtDecode(token)
+    //         const getUser = () => {
+    //             axiosInstance.get(`users/profile/${decoded.user_id}/`, { headers: { Authorization: `JWT ${token}` } })
+    //                 .then(res => {
+    //                     setLoginUser(res.data)
+    //                 })
+    //                 .catch(err => {
+    //                     console.log(err)
+    //                 })
+    //         }
+    //         getUser()
+    //     }
+    // }, [])
+
+
 
     const handleClick = () => {
         if (window.innerWidth < 768) {
@@ -16,11 +37,10 @@ const Header = () => {
     const logout = () => {
         localStorage.removeItem('access')
         localStorage.removeItem('refresh')
+        localStorage.removeItem('user')
         setLoginUser(null)
         window.location.reload()
     }
-
-    console.log(loginUser)
 
     return (
         <div className='header'>
@@ -51,14 +71,15 @@ const Header = () => {
                                     loginUser ? <Link className="nav-link active fw-bold" onClick={handleClick} to='/profile'>{loginUser.user_name}</Link> : <Link className="nav-link active" onClick={handleClick} to="/login">Log in</Link>
                                 }
                             </li>
+                            {loginUser && <li className="nav-item mx-2">
+                                <Link className="nav-link active" onClick={handleClick} to="/cart">Cart</Link>
+                            </li>}
                             <li className="nav-item">
                                 {
                                     loginUser ? <Link className="nav-link active" onClick={logout}>Log out</Link> : <Link className="nav-link active" onClick={handleClick} to="/register">Sign up</Link>
                                 }
                             </li>
-                            <li className="nav-item">
-                                <Link className="nav-link active" onClick={handleClick} to="/cart">Cart</Link>
-                            </li>
+                            
                         </ul>
 
                     </div>

@@ -68,7 +68,7 @@ h3 {
   font-family: 'Newsreader', serif;
 }
 
-.photo h1 {
+.photo h1, .cart h1 {
   font-family: 'Newsreader', serif;
   margin: 0;
 }

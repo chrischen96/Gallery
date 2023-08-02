@@ -7,7 +7,11 @@ import LoginContext from "../../context.jsx";
 const Photo = () => {
     const { id } = useParams()
     const [photo, setPhoto] = useState(null)
-    const { loginUser, cart, setCart } = useContext(LoginContext)
+    const [cart, setCart] = useState(null)
+    const { loginUser } = useContext(LoginContext)
+    const [user, setUser] = useState(
+        JSON.parse(localStorage.getItem('user'))
+    )
 
     useEffect(() => {
         const getPhoto = async () => {
@@ -21,18 +25,27 @@ const Photo = () => {
         getPhoto()
     }, [id]);
 
-    console.log(loginUser, cart)
-
     const navigate = useNavigate()
 
     if (!photo) {
         return null
     } else {
-        console.log(photo)
     }
 
     const handleClick = async () => {
-        
+        await axiosInstance
+            .get(`cart/${user.email}`)
+            .then((res) => {
+                const cart = res.data
+                cart.photos.push(photo.id)
+                console.log(cart)
+                axiosInstance
+                    .put(`cart/${user.email}/`, cart)
+                    .then((res) => {
+                        console.log(res.data)
+                    })
+            })
+            .catch((err) => console.log(err))
     }
 
 
@@ -134,7 +147,7 @@ const Photo = () => {
                                         </h5>
                                     </div>
                                     <div className="modal-footer">
-                                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Continue Browsing</button>
+                                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Continue Browsing</button>
                                         <button
                                             type="button"
                                             className="btn btn-primary"

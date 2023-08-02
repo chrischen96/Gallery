@@ -31,7 +31,6 @@ const Login = () => {
       .then(async (res) => {
         localStorage.setItem('access', res.data.access);
         localStorage.setItem('refresh', res.data.refresh);
-
       })
       .then(() => {
         const token = localStorage.getItem('access');
@@ -41,6 +40,7 @@ const Login = () => {
           .get(`users/profile/${decoded.user_id}/`, { headers: { Authorization: `JWT ${token}` } })
           .then((res) => {
             setLoginUser(res.data);
+            localStorage.setItem('user', JSON.stringify(res.data));
             console.log(res.data);
           })
           .catch((err) => {

@@ -36,10 +36,16 @@ const Register = () => {
                     password: formData.password,
                 })
                 .then((res) => {
-                    navigate('/login');
                     console.log(res);
                     console.log(res.data);
-                });
+                    axiosInstance
+                        .post(`cart/`, {user: formData.email,})
+                        .then((res) => {
+                            console.log(res);
+                            console.log(res.data);
+                        })
+                    navigate('/login');
+                })
         }
     };
 
@@ -120,7 +126,7 @@ const Register = () => {
                     </div>
 
                     <div className="form-check text-start my-4">
-                        <input className="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault"/>
+                        <input className="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault" />
                         <label className="form-check-label text-black" htmlFor="flexCheckDefault">
                             <p>By clicking Sign up, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
                         </label>
