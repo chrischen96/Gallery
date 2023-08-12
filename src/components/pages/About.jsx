@@ -31,7 +31,7 @@ const About = () => {
       <div className='container-fluid my-3'>
         <div>
           <ResponsiveMasonry
-            columnsCountBreakPoints={{ 400: 1, 680: 2, 1200: 3, 1400: 4 }}
+            columnsCountBreakPoints={{ 400: 1, 680: 2, 1200: 2, 1400: 2 }}
           >
             <Masonry>
               {myPortraits.map((item, index) => (
@@ -39,7 +39,7 @@ const About = () => {
                   <img
                     src={item}
                     className="pic w-100"
-                    style={{ borderRadius: '8px', cursor: 'pointer' }}
+                    style={{ borderRadius: '8px'}}
                   />
                 </div>
               ))}

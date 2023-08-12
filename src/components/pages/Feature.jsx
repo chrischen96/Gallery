@@ -2,9 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useState, useEffect, useContext } from 'react'
 import axiosInstance from '../../axios.jsx'
-import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry'
+// import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry'
 import LoginContext from '../../context.jsx'
 import { useNavigate } from 'react-router-dom'
+import Masonry from '@mui/lab/Masonry';
 
 
 const Feature = () => {
@@ -44,7 +45,7 @@ const Feature = () => {
       </div>
 
       <div className="container-fluid py-4">
-        <ResponsiveMasonry
+        {/* <ResponsiveMasonry
           columnsCountBreakPoints={{ 400: 1, 980: 2, 1200: 3 }}
         >
           <Masonry>
@@ -61,7 +62,26 @@ const Feature = () => {
               </div>
             ))}
           </Masonry>
-        </ResponsiveMasonry>
+        </ResponsiveMasonry> */}
+
+        <Masonry columns={{ xs: 1, sm: 1, md: 2, lg: 3 }} spacing={2}>
+          {collection.map((item, index) => (
+            <div key={index} >
+              <img
+                src={`${item.image}?w=162&auto=format`}
+                srcSet={`${item.image}?w=162&auto=format&dpr=2 2x`}
+                alt={item.title}
+                onClick={() => showPhoto(item.id)}
+                loading="lazy"
+                style={{
+                  borderRadius: '8px',
+                  width: '100%',
+                  cursor: 'pointer'
+                }}
+              />
+            </div>
+          ))}
+        </Masonry>
       </div>
     </div>
   )

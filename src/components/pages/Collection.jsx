@@ -3,9 +3,9 @@ import { useState, useEffect } from 'react'
 import axiosInstance from '../../axios.jsx'
 import { useNavigate } from 'react-router-dom'
 import UserContext from '../../context'
-import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry'
-// import Box from '@mui/material/Box';
-// import Masonry from '@mui/lab/Masonry';
+// import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry'
+import Box from '@mui/material/Box';
+import Masonry from '@mui/lab/Masonry';
 
 
 const Collection = () => {
@@ -44,7 +44,7 @@ const Collection = () => {
   return (
     <div className='collection'>
       <div className="container-fluid py-4">
-        <ResponsiveMasonry
+        {/* <ResponsiveMasonry
           columnsCountBreakPoints={{ 400: 1, 680: 2, 990: 3, 1400: 4 }}
         >
           <Masonry>
@@ -61,25 +61,27 @@ const Collection = () => {
               </div>
             ))}
           </Masonry>
-        </ResponsiveMasonry>
+        </ResponsiveMasonry> */}
 
         {/* <Box sx={{ width: 500, minHeight: 829 }}> */}
-          {/* <Masonry columns={{xs:1, sm:2, md:3, lg:4}} spacing={2}>
-            {collection.map((item, index) => (
-              <div key={index} >
+          <Masonry columns={{xs:1, sm:2, md:3, lg:4}} spacing={2}>
+            {collection.map((item) => (
+              <div key={item.id} >
                 <img
                   src={`${item.image}?w=162&auto=format`}
                   srcSet={`${item.image}?w=162&auto=format&dpr=2 2x`}
                   alt={item.title}
+                  onClick={() => showPhoto(item.id)}
                   loading="lazy"
                   style={{
                     borderRadius: '8px',
                     width: '100%',
+                    cursor: 'pointer'
                   }}
                 />
               </div>
             ))}
-          </Masonry> */}
+          </Masonry>
         {/* </Box> */}
 
         {/* <div className="grid">

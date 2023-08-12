@@ -45,7 +45,7 @@ const Footer = () => {
             <li className="nav-item"><a href="#" className="nav-link px-2 text-body-secondary">About</a></li>
           </ul>
           <div className="d-flex flex-column flex-sm-row justify-content-between align-items-center py-2 border-top">
-            <p className='m-0'>Copyright © 2023 Xin Inc. All rights reserved.</p>
+            <p className='m-0'>Copyright © 2023 Xin Chen. All rights reserved.</p>
             <ul className="list-unstyled d-flex m-0">
               <li className="ms-3"><a className="link-body-emphasis" href="#"><i className="bi bi-linkedin"></i></a></li>
               <li className="ms-3"><a className="link-body-emphasis" href="#"><i className="bi bi-instagram"></i></a></li>
